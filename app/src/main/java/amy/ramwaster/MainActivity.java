@@ -11,30 +11,20 @@ import java.util.Map;
 
 
 public class MainActivity extends ActionBarActivity {
-    public int threadCount;
+    //creates memory leak and terminates when a specified of RAM is being used
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         System.out.println("helloooo");
-        //getBitmapFromURL();
         ActivityManager activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
         MemoryLeaker m = new MemoryLeaker(activityManager);
-        //runRamCheck(checkMemory());
         System.out.print("end");
         System.out.print("end");
         System.out.print("end");
         System.out.print("end");
         finish();
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
     }
 
 
@@ -44,7 +34,7 @@ public class MainActivity extends ActionBarActivity {
     public static class MemoryLeaker {
 
         //creates a memory leak
-        //heavily 
+        //heavily inspired by http://java.dzone.com/articles/how-create-memory-leak
 
         public MemoryLeaker(ActivityManager activityManager) {
             Map m = new HashMap();
